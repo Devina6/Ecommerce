@@ -4,3 +4,4 @@
 3. install nodemon
 4. install express
 5. install mysql2
+6. install sequelize
