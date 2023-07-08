@@ -22,11 +22,44 @@ async function details(){
 }
 
 function printOnScreen(obj){
-    var parentElem = document.getElementById('listOfProducts');
+   switch(obj.category){
+        case "Beauty":{
+            var parentElem = document.getElementById('Beauty');
+            break;
+        }
+        case "Clothing":{
+            var parentElem = document.getElementById('Clothing');
+            break;
+        }
+        case "Electronics":{
+            var parentElem = document.getElementById('Electronics');
+            break;
+        }
+        case "Food":{
+            var parentElem = document.getElementById('Food');
+            break;
+        }
+        case "Health":{
+            var parentElem = document.getElementById('Health');
+            break;
+        }
+        case "Sports":{
+            var parentElem = document.getElementById('Sports');
+            break;
+        }
+        case "Travel":{
+            var parentElem = document.getElementById('Travel');
+            break;
+        }
+        default:{
+            var parentElem = document.getElementById('listOfProducts');
+        }
+    }
+    
     var childElem = document.createElement('li');
     childElem.className = 'productDetails';
     childElem.setAttribute('key',obj.id);
-    childElem.textContent = 'Title: '+obj.amount+' --- Price: '+obj.price+' --- Description: '+obj.description+' --- Category: '+obj.category;
+    childElem.textContent = 'Title: '+obj.title+' --- Price: '+obj.price+' --- Description: '+obj.description+' --- Category: '+obj.category;
     parentElem.appendChild(childElem);
     
     var deleteBtn = document.createElement('button');
@@ -43,8 +76,7 @@ async function removeItem(e){
             const key = li.getAttribute('key');
             let url = 'http://localhost:3333/delete/'+key;
             let res = await axios.get(url);
-            console.log(res)
-            productList.removeChild(li);            
+            li.parentNode.removeChild(li);        
             }
     }
 }
