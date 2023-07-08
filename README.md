@@ -5,3 +5,4 @@
 4. install express
 5. install mysql2
 6. install sequelize
+7. install cors
